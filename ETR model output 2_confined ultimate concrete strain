@@ -14,10 +14,10 @@ import pickle
 df = pd.read_excel('F:\Project\matlab\ml fifth fem out 2.xlsx',header = [0])
 df.head()
 data = df.values
-X = data[:,:6]
+X = data[:,:7]
 y = data[:,-1]
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=123)
-modelo2 = ExtraTreesRegressor(n_jobs=-1,n_estimators = 115,min_samples_split = 2,max_features=6,min_samples_leaf=1,max_depth=20)
+modelo2 = ExtraTreesRegressor(n_jobs=-1,n_estimators = 135,min_samples_split = 2,max_features=6,min_samples_leaf=1,max_depth=24)
 modelo2.fit(X_train,y_train)
 cv = RepeatedKFold(n_splits=10,n_repeats=3, random_state=123)
 scores = cross_val_score(modelo2, X, y, scoring='neg_mean_absolute_error', cv=cv, n_jobs=-1)
