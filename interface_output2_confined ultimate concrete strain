@@ -75,6 +75,12 @@ canvas1.create_window(20, 320, anchor="w",window=label6)
 entry6 = tk.Entry (root) # create 5th entry box
 canvas1.create_window(480, 320, window=entry6)
 
+label7 = tk.Label(root, text='Input 7: ',font=('Futura Md Bt',12),bg='#e9ecef')
+canvas1.create_window(20, 350, anchor="w",window=label7)
+
+entry7 = tk.Entry (root) # create 5th entry box
+canvas1.create_window(480, 350, window=entry7)
+
 
 label0000 = tk.Label(root, text='Output',font=('Futura Md Bt',12,'bold','italic','underline'),bg='#e9ecef')
 canvas1.create_window(20, 410, anchor="w",window=label0000)
@@ -103,6 +109,10 @@ def values():
     
     global New_Input_6 # our 5th input variable
     New_Input_6 = float(entry6.get()) 
+    
+    global New_Input_7 # our 5th input variable
+    New_Input_7 = float(entry7.get()) 
+
 
 import pandas as pd
 import numpy as np
@@ -115,7 +125,7 @@ from tkinter import messagebox
 def values(): 
     # Validate and get the values from the entry boxes
     input_values = []
-    entry_boxes = [entry1, entry2, entry3, entry4, entry5, entry6]
+    entry_boxes = [entry1, entry2, entry3, entry4, entry5, entry6, entry7]
 
     for entry_box in entry_boxes:
         value = entry_box.get().strip()
@@ -134,7 +144,7 @@ def values():
     # If all input values are valid, proceed with prediction
     DataFrame = pd.read_excel('F:\Project\matlab\ml fifth fem out 2.xlsx', header=[0])
     data = np.array([input_values])
-    Input_data = pd.DataFrame(data, columns=['Input_1', 'Input_2', 'Input_3', 'Input_4', 'Input_5','Input_6'])
+    Input_data = pd.DataFrame(data, columns=['Input_1', 'Input_2', 'Input_3', 'Input_4', 'Input_5','Input_6','Input_7'])
 
     # Predict using the loaded Random Forest model
     Prediction_result = np.around(modelo2_loaded.predict(Input_data), 5)
@@ -148,7 +158,7 @@ def values():
     # If all input values are valid, proceed with prediction
     DataFrame = pd.read_excel('F:\Project\matlab\ml fifth fem out 2.xlsx', header=[0])
     data = np.array([input_values])
-    Input_data = pd.DataFrame(data, columns=['Input_1', 'Input_2', 'Input_3', 'Input_4', 'Input_5','Input_6'])
+    Input_data = pd.DataFrame(data, columns=['Input_1', 'Input_2', 'Input_3', 'Input_4', 'Input_5','Input_6','Input_7'])
 
     # Predict using the loaded Random Forest model
     Prediction_result = np.around(modelo2_loaded.predict(Input_data), 5)
@@ -158,8 +168,8 @@ def values():
     canvas1.create_window(450, 450, anchor="w", window=label_Prediction)
 
     DataFrame = pd.read_excel('F:\Project\matlab\ml fifth fem out 2.xlsx',header = [0])
-    data = np.array([[New_Input_1, New_Input_2, New_Input_3, New_Input_4, New_Input_5, New_Input_6]])
-    Input_data = pd.DataFrame(data, columns=['Input_1', 'Input_2', 'Input_3', 'Input_4', 'Input_5','Input_6'])
+    data = np.array([[New_Input_1, New_Input_2, New_Input_3, New_Input_4, New_Input_5, New_Input_6, New_Input_7]])
+    Input_data = pd.DataFrame(data, columns=['Input_1', 'Input_2', 'Input_3', 'Input_4', 'Input_5','Input_6','Input_7'])
  
     # Predict using the loaded Random Forest model
     #y_pred = rfr_loaded.predict(X_new_data)
